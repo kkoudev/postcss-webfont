@@ -1,0 +1,264 @@
+---
+parser: "babel-eslint"
+
+parserOptions:
+  ecmaVersion: 6
+  sourceType: 'module'
+
+env:
+  es6    : true
+  browser: true
+  node   : true
+
+globals:
+  TweenMax : true          # 必要に応じて変える
+  riot: false
+  opts: false
+  dataLayer: false
+
+# eslint rules -> 0: disable, 1: warn, 2: error
+rules:
+  # Possible Errors
+  comma-dangle            : [0, 'never'] # ケツカンマ無効
+  no-cond-assign          : 2            # 条件式で'='を禁止
+  no-console              : 1            # `console`を警告
+  no-constant-condition   : 2            # 条件式に定数を禁止
+  no-control-regex        : 2            # 正規表現で制御文字を禁止
+  no-debugger             : 1            # `debugger`を警告
+  no-dupe-args            : 2            # 引数の変数名の重複を禁止
+  no-dupe-keys            : 2            # キー名の重複を禁止
+  no-duplicate-case       : 2            # caseの重複を禁止
+  no-empty-character-class: 2            # 正規表現で[]を禁止
+  no-empty                : 2            # 空のブロックスコープを禁止
+  no-ex-assign            : 2            # Exceptionの引数に代入禁止
+  no-extra-boolean-cast   : 2            # 条件式、Booleanの引数で`!!`を禁止
+  no-extra-parens         : 1            # 不必要な括弧を警告
+  no-extra-semi           : 2            # 不要なセミコロンを禁止
+  no-func-assign          : 2            # functionへの再代入を禁止
+  no-inner-declarations   : [2, 'both']  # ifなどのブロックスコープ内で関数宣言を禁止
+  no-invalid-regexp       : 2            # 不正な正規表現の構文を禁止
+  no-irregular-whitespace : 2            # 不正な空白文字を禁止
+  no-negated-in-lhs       : 2            # in句で`!`(否定句)を禁止
+  no-obj-calls            : 2            # `Math`, `JSON`等を関数で読み出すのを禁止
+  no-regex-spaces         : 2            # 正規表現の`//`シンタックスで連続したスペースを禁止
+  no-sparse-arrays        : 2            # `[,]`などの空のオブジェクトの宣言を禁止
+  no-unexpected-multiline : 2            # 不正な複数行に渡る処理を禁止
+  no-unreachable          : 2            # `return`や`break`の後のステートメントを禁止
+  use-isnan               : 2            # NaNの比較はisNaNを利用する
+  valid-jsdoc             : 0            # JSDocのシンタックスを有効
+  valid-typeof            : 2            # typeofの比較先の文字列をチェック
+
+  # Best Practices
+  accessor-pairs          : 2            # getter/setterをペアで定義
+  array-callback-return   : 2            # arrayのリターンを定義
+  block-scoped-var        : 2            # ブロックスコープ内で定義された変数をブロックスコープ外で利用するのを禁止
+  complexity              : [0, 10]      # 複雑なif文を制御
+  consistent-return       : 2            # 戻り値の方を統一
+  curly                   : 1            # if文などで`{``}`を必須
+  default-case            : 2            # switch文でdefaultを必ず付ける
+  dot-location            : [2, "property"] # ドットで折り返す場合、先頭にドットを付けること
+  dot-notation            : 1            # オブジェクトのプロパティを呼び出すときドット表記で呼び出すこと
+  eqeqeq                  : 2            # `==`, `!=`の使用を禁止
+  guard-for-in            : 2            # for-inでhasOwnPropertyを必須
+  no-alert                : 1            # alertを警告
+  no-caller               : 2            # `arguments.callee`, `arguments.caller`を禁止
+  no-case-declarations    : 0            # caseで{}を利用するかどうか
+  no-div-regex            : 2            # 正規表現で`/=`を禁止
+  no-else-return          : 1            # elseでのreturnを警告
+  no-empty-function       : 2            # 空のfunctionを禁止
+  no-empty-pattern        : 2            # Destructuring構文で空のオブジェクトを禁止
+  no-eq-null              : 2            # nullで比較するときは`===`,`!==`を利用する
+  no-eval                 : 2            # evalは禁止
+  no-extend-native        : 2            # ネイティブオブジェクトへのprototypeの追加を禁止
+  no-extra-bind           : 2            # 不必要なbindを禁止
+  no-extra-label          : 2            # 不要なラベル
+  no-fallthrough          : 2            # switch文で暗黙のfallthroughを禁止
+  no-implicit-globals     : 1            # 暗黙のグローバル
+  no-floating-decimal     : 1            # 少数値の省略表記を警告
+  no-implicit-coercion    : 0            # プリミティブの暗黙変換は許可
+  no-implied-eval         : 2            # 文字列を関数にできる処理を禁止
+  no-invalid-this         : 2            # 不正なthisの呼び出しを禁止
+  no-iterator             : 2            # `__iterator__`の定義を禁止
+  no-labels               : 2            # labeledの使用を禁止
+  no-lone-blocks          : 2            # 不要なブロックスコープを禁止
+  no-loop-func            : 2            # ループ内での関数の定義を禁止
+  no-magic-numbers        : [0, {        # マジックナンバーを禁止
+    enforceConst: true
+  }]
+  no-multi-spaces         : [0, {        # 不要なスペース文字を禁止
+    exceptions: {
+      'Property'           : true,
+      'VariableDeclarator' : true,
+      'ImportDeclaration'  : true
+    }
+  }]
+  no-multi-str            : 2            # スラッシュを区切りとする複数行を禁止
+  no-native-reassign      : 2            # ネイティブオブジェクトへの代入を禁止
+  no-new-func             : 2            # `Function`の利用を禁止
+  no-new-wrappers         : 2            # プリミティブ型をnewで宣言するのを禁止
+  no-new                  : 1            # newで宣言する場合に戻り値がないものを警告
+  no-octal-escape         : 2            # 八進数でエスケープされた文字を禁止
+  no-octal                : 2            # 0埋めの八進数数値を禁止
+  no-param-reassign       : 1            # 引数の再代入
+  no-process-env          : 0            # `process.env`の使用を禁止
+  no-proto                : 2            # `__proto__`の使用を禁止
+  no-redeclare            : 2            # 同一変数名の再宣言を禁止
+  no-return-assign        : 2            # 式をreturnするのを禁止
+  no-script-url           : 2            # `javascript:`を禁止
+  no-self-assign          : 2            # 分割代入で同じ値に代入しない
+  no-self-compare         : 2            # 同じ値で比較するのを禁止
+  no-sequences            : 2            # カンマで式を分割するのを禁止。利用する場合はカッコで括る
+  no-throw-literal        : 2            # throwする場合はnew Errorを使う
+  no-unmodified-loop-condition: 2        # whileの条件内の値が変更されるか
+  no-unused-expressions   : [2, {        # 不要な評価式を禁止
+    allowShortCircuit: true,             # `||`,`&&`は許可
+    allowTernary: true                   # 三項演算子内
+  }]
+  no-unused-labels        : 2            # 不要なラベル
+  no-useless-call         : 2            # 不必要な.call(), .apply()を禁止
+  no-useless-concat       : 2            # 不正な文字列連結を禁止
+  no-void                 : 2            # `void`の使用を禁止
+  no-warning-comments     : 0            # 禁止ワードは特に指定しない
+  no-with                 : 2            # `with`の使用を禁止
+  radix                   : 2            # parseIntは必ず10進数とする
+  vars-on-top             : 0            # varはどこでも宣言
+  wrap-iife               : [2, "inside"] # 即時関数の書き方
+  yoda                    : 2            # フォースとともにあらんことを
+
+  # Strict Mode
+  strict                  : [2, 'never'] # strictは不要
+
+  # Variables
+  init-declarations       : [2, 'always'] # let, constはデフォルト値が必要
+  no-catch-shadow         : 2            # cacheの引数の巻き上げを禁止(IE8のみ)
+  no-delete-var           : 2            # 変数に対して`delete`を禁止
+  no-label-var            : 2            # labelを禁止
+  no-shadow-restricted-names : 2         # `undefined`や`NaN`などのグローバルの値の再定義を禁止
+  no-shadow               : [2, {        # 変数が上のスコープで定義されている場合エラー（巻き上げ禁止）
+    builtinGlobals: false,               # グローバル変数の再定義は許可
+    hoist         : 'all'
+  }]
+  no-undef-init           : 2            # 変数のデフォルト値に`undefined`を利用するのを禁止
+  no-undef                : 1            # 定義されていない変数の利用を禁止
+  no-undefined            : 2            # `undefined`の利用を禁止
+  no-unused-vars          : 2            # 利用されていない変数がある場合エラー
+  no-use-before-define    : [1, 'nofunc'] # 前に定義されていない変数の利用を禁止(ただし関数宣言は許可)
+
+  # Node.js and CommonJS
+  callback-return         : [2,            # コールバックをreturnする
+    ['callback', 'cb', 'next']
+  ]
+  global-require          : 2              # トップレベルでのみrequireする
+  handle-callback-err     : [2, "^(err|error)$"] # コールバックのerrorをハンドリングする
+  no-mixed-requires       : 0              # requireを混ぜるか
+  no-new-require          : 2              # requireに対してnewしない
+  no-path-concat          : 2              # `__dirname`の文字列結合を禁止
+  no-process-exit         : 1              # process.exitの使用制限
+  no-restricted-modules   : 0              # モジュールの使用制限
+  no-sync                 : 0              # Syncの使用制限
+
+  # Stylistic Issues
+  array-bracket-spacing   : [2, 'never']    # 配列のスペース
+  block-spacing           : [2, 'always']   # 一行のブロックスコープ内部のスペース
+  brace-style             : [2, '1tbs', {   # ブロックスコープの改行
+    allowSingleLine: true                   # 1行記法は許可
+  }]
+  camelcase               : 0               # キャメルケースで書くこと
+  comma-spacing           : 2               # カンマの前後のスペース位置
+  comma-style             : [2, 'last']     # 改行時のカンマの位置
+  computed-property-spacing: 2              # 添字の括弧内のスペース
+  consistent-this         : [2, 'self']     # thisを代入する場合はselfを利用する
+  eol-last                : 2               # 最終行の空行を禁止
+  func-names              : 0               # 無名関数は許可
+  func-style              : [2, 'expression'] # 関数式を利用
+  id-length               : 0               # 変数名の長さ
+  id-match                : 0               # 変数名の規則
+  indent                  : [2, 2, {        # インデント
+    SwitchCase: 1
+  }]
+  jsx-quotes              : [2, 'prefer-double'] # JSXではダブルクォートを優先的に使用(JSXのみ)
+  key-spacing             : [0, {           #オブジェクトのコロンの位置を揃える
+    align: "colon"
+  }]
+  keyword-spacing         : [2, {after: true}]  # キーワード前後のスペース
+  lines-around-comment    : [0, {           # コメント行の前後の空行
+    beforeBlockComment: false,              # コメント行の前のみ空行を許可
+    afterBlockComment : false,
+    beforeLineComment : false,
+    afterLineComment  : false,
+    allowBlockStart   : false,              # ブロックスコープの最後でコメント行を許可しない
+    allowBlockEnd     : false
+  }]
+  linebreak-style         : [2, 'unix']     # 改行コード
+  max-nested-callbacks    : [2, 3]          # コールバックのネスト
+  new-cap                 : [2, {           # newを使用する場合は先頭は大文字
+    properties: false                       # propertyを使った場合は許可
+  }]
+  new-parens              : 2               # newするときは括弧必須
+  newline-after-var       : 0               # 変数宣言の後の空行
+  no-array-constructor    : 2               # `Array`で配列を生成するのを禁止
+  no-continue             : 0               # continueは使って良い
+  no-inline-comments      : 0               # inline commentを許可しない
+  no-lonely-if            : 2               # elseの中にifのみを書くのを禁止
+  no-mixed-spaces-and-tabs: 2               # タブ文字とスペース文字の混在を禁止
+  no-multiple-empty-lines : 2               # 複数行に渡る空行を禁止
+  no-nested-ternary       : 2               # 三項演算子のネストを禁止
+  no-negated-condition    : 2               # 否定句とelseを使ったif文を禁止
+  no-new-object           : 2               # `Object`のnewを禁止(`{}`リテラルを使う)
+  no-restricted-syntax    : [2, "WithStatement"] # `with`を禁止
+  no-spaced-func          : 2               # 関数呼び出し時の括弧の前にスペースを入れない
+  no-ternary              : 0               # 三項演算子は使用可
+  no-trailing-spaces      : 2               # 末尾のスペースを禁止
+  no-underscore-dangle    : 0               # 変数に`_`を付けるのを許可
+  no-unneeded-ternary     : 2               # 三項演算子を簡潔に書く
+  object-curly-spacing    : [2, 'always']   # オブジェクトのスペース
+  one-var                 : 0               # let, constの宣言をまとめるか
+  operator-assignment     : [2, 'always']   # 数値演算は省略記号を使うようにする
+  operator-linebreak      : 0               # 式の折り返しは末尾に記号を付ける
+  padded-blocks           : 0               # ブロックスコープ内の空行
+  quote-props             : [2, 'as-needed'] # オブジェクトのプロパティにクォート出来る限り使わない
+  quotes                  : [2, 'single']    # シングルクォートを利用
+  require-jsdoc           : 1                # jsDocを書くこと!!
+  semi-spacing            : 2                # セミコロンの前後のスペース
+  semi                    : [2, 'always']    # セミコロンを必ず付ける
+  sort-vars               : 0                # 変数を宣言時にソートするか
+  space-before-blocks     : [2, 'always']
+  space-before-function-paren: [2, 'never']
+  space-in-parens         : [2, 'never']
+  space-infix-ops         : 2                # 演算子の前後にはスペースを入れる
+  space-unary-ops         : 2                # 特定のキーワード、演算子の前後のスペース
+  spaced-comment          : [2, 'always']    # コメント前後のスペース
+  wrap-regex              : 0                # 正規表現リテラルを括弧でくくらなくてもいい
+
+  # ECMAScript 6
+  arrow-body-style        : [0, "as-needed"] # arrow funcを括弧でラップするかどうか
+  arrow-parens            : [2, 'always']    # arrow functionの括弧は必要
+  arrow-spacing           : [2, {            # arrow functionの前後のスペースは付ける
+    before: true,
+    after: true
+  }]
+  constructor-super       : 2                # `super()`のチェック
+  generator-star-spacing  : [2, {            # generatorの`*`の位置を統一
+    before: true,
+    after : false
+  }]
+  no-class-assign         : 2                # クラスとして定義した変数に再代入を禁止
+  no-const-assign         : 2                # constの再代入を禁止
+  no-dupe-class-members   : 2                # クラスメンバの重複を禁止
+  no-this-before-super    : 2                # `super()`の前にthisをいじらない
+  no-var                  : 2                # `var`の利用を禁止
+  object-shorthand        : [2, 'always']    # オブジェクトの省略記号を利用
+  prefer-arrow-callback   : 2                # コールバックにはarrow functionを使う
+  prefer-const            : 2                # constの利用を推奨
+  prefer-spread           : 2                # `apply`ではなくspered opratorを利用する
+  prefer-reflect          : 2                # Refrectの利用する
+  prefer-template         : 2                # template stringsを利用する
+  require-yield           : 2                # generatorではyieldを必須
+
+  # Legacy
+  max-depth               : [2, 5]           # ネストの深さ
+  max-len                 : [2, 120, 2]      # 1行における文字数
+  max-params              : [2, 5]           # 引数の数
+  max-statements          : [0, 30]          # ステートメント数
+  no-bitwise              : 1                # ビット演算
+  no-plusplus             : 0                # `++`, `--`は許可

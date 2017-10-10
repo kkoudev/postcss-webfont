@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'font-awesome';
+  src: url('../fonts/font-awesome.eot?test');
+  src: url('../fonts/font-awesome.eot?test#iefix') format('embedded-opentype'), url('../fonts/font-awesome.woff?test') format('woff'), url('../fonts/font-awesome.ttf?test') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^='iconfont-font-awesome-'], [class*=' iconfont-font-awesome-'] {
+  font-family: 'font-awesome' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.iconfont-font-awesome-backward::before {
+  content: '\EA01';
+}
+.iconfont-font-awesome-fast-backward::before {
+  content: '\EA02';
+}
+.iconfont-font-awesome-fast-forward::before {
+  content: '\EA03';
+}
+.iconfont-font-awesome-forward::before {
+  content: '\EA04';
+}
+.iconfont-font-awesome-pause::before {
+  content: '\EA05';
+}
+.iconfont-font-awesome-play::before {
+  content: '\EA06';
+}
+.iconfont-font-awesome-step-backward::before {
+  content: '\EA07';
+}
+.iconfont-font-awesome-step-forward::before {
+  content: '\EA08';
+}
+.iconfont-font-awesome-stop::before {
+  content: '\EA09';
+}
