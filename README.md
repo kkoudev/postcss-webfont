@@ -102,7 +102,7 @@ Type: `Integer`
 Default: `0xEA01`
 
 
-### svg2icons2svgfont options
+### svgicons2svgfont options
 
 The options of [svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont#new-svgicons2svgfontstreamoptions) are available:
 
