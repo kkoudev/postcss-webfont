@@ -3,6 +3,7 @@
  */
 const fs                        = require('fs-extra');
 const path                      = require('path');
+const fileCache                 = require('node-file-cache');
 const SVGIcons2SVGFontStream    = require('svgicons2svgfont');
 const fileSorter                = require('svgicons2svgfont/src/filesorter');
 const svg2ttf                   = require('svg2ttf');
@@ -10,8 +11,11 @@ const ttf2woff                  = require('ttf2woff');
 const ttf2woff2                 = require('ttf2woff2');
 const ttf2eot                   = require('ttf2eot');
 
+// Cache key for svg font table
+const CACHE_KEY_SVG_FONT_TABLE = 'cacheSVGFontTable';
+
 // defines font generator execuging groups
-const executingFontGenerators = [
+const EXECUTING_FONT_GENERATORS = [
   'svg',
   'ttf',
   [
@@ -22,17 +26,72 @@ const executingFontGenerators = [
 ];
 
 // Font generators.
-const fontGenerators = {
+const FONT_GENERATORS = {
 
   // SVG font
   svg: (options) => {
 
     return new Promise((resolve, reject) => {
 
-      const fontStream    = new SVGIcons2SVGFontStream(options.fontOptions);
-      const sortedFiles   = options.files.slice(0).sort((file1, file2) => fileSorter(file1, file2));
-      const simpleGlyphs  = [];
-      let   fontBuffer    = new Buffer(0);
+      const cacheSVGFontTable = options.fileCache.get(CACHE_KEY_SVG_FONT_TABLE) || {};
+      const fontStream        = new SVGIcons2SVGFontStream(options.fontOptions);
+      const sortedFiles       = options.files.slice(0).sort((file1, file2) => fileSorter(file1, file2));
+      const fileMTimes        = {};
+      const simpleGlyphs      = [];
+      let   fontBuffer        = new Buffer(0);
+
+      // for each sorted files.
+      sortedFiles.forEach((file) => {
+
+        // put timestamp of file.
+        fileMTimes[file] = fs.statSync(file).mtime.getTime();
+
+      });
+
+      // Get svg font cache
+      const cacheSVGFont = cacheSVGFontTable[options.fontOptions.fontName];
+
+      // Has cache?
+      // and equals length of fileMTimes?
+      if (cacheSVGFont && Object.keys(cacheSVGFont.fileMTimes).length === Object.keys(fileMTimes).length) {
+
+        let isUpdated = false;
+
+        // for each svg files
+        Object.keys(cacheSVGFont.fileMTimes).some((key) => {
+
+          // not equals mtime?
+          if (!(key in fileMTimes) || fileMTimes[key] !== cacheSVGFont.fileMTimes[key]) {
+
+            // require updating
+            isUpdated = true;
+
+            // break loop
+            return true;
+
+          }
+
+          // contnue loop
+          return false;
+
+        });
+
+        // Not require updating?
+        if (!isUpdated) {
+
+          // append metadata list
+          options.glyphs = cacheSVGFont.simpleGlyphs;
+
+          // put font buffer
+          options.fontBufferTable.svg = null;
+
+          // noop
+          resolve();
+          return;
+
+        }
+
+      }
 
       // creates directory
       fs.mkdirsSync(options.dest);
@@ -49,6 +108,13 @@ const fontGenerators = {
 
         // put font buffer
         options.fontBufferTable.svg = fontBuffer.toString();
+
+        // cache svg font
+        cacheSVGFontTable[options.fontOptions.fontName] = {
+          simpleGlyphs,
+          fileMTimes
+        };
+        options.fileCache.set(CACHE_KEY_SVG_FONT_TABLE, cacheSVGFontTable);
 
         // contains svg format?
         if (options.fontOptions.formats.indexOf('svg') === -1) {
@@ -132,6 +198,15 @@ const fontGenerators = {
 
     return new Promise((resolve, reject) => {
 
+      // Not specified svg?
+      if (!options.fontBufferTable.svg) {
+
+        // noop
+        resolve();
+        return;
+
+      }
+
       // creates directory
       fs.mkdirsSync(options.dest);
 
@@ -170,6 +245,15 @@ const fontGenerators = {
 
     return new Promise((resolve, reject) => {
 
+      // Not specified ttf?
+      if (!options.fontBufferTable.ttf) {
+
+        // noop
+        resolve();
+        return;
+
+      }
+
       // creates directory
       fs.mkdirsSync(options.dest);
 
@@ -205,6 +289,15 @@ const fontGenerators = {
 
     return new Promise((resolve, reject) => {
 
+      // Not specified ttf?
+      if (!options.fontBufferTable.ttf) {
+
+        // noop
+        resolve();
+        return;
+
+      }
+
       // creates directory
       fs.mkdirsSync(options.dest);
 
@@ -239,6 +332,15 @@ const fontGenerators = {
   eot: (options) => {
 
     return new Promise((resolve, reject) => {
+
+      // Not specified ttf?
+      if (!options.fontBufferTable.ttf) {
+
+        // noop
+        resolve();
+        return;
+
+      }
 
       // creates directory
       fs.mkdirsSync(options.dest);
@@ -282,7 +384,7 @@ const fontGenerators = {
  */
 const executeFontGenerator = (type, options) => {
 
-  const fontGenerator = fontGenerators[type];
+  const fontGenerator = FONT_GENERATORS[type];
 
   // Exists font generator?
   if (fontGenerator) {
@@ -310,9 +412,15 @@ module.exports = (options) => {
   usingOptions.fontBufferTable = {};
   usingOptions.fontOptions.log = () => {}; // eslint-disable-line
 
+  // creates cache directory
+  usingOptions.cachePath && fs.mkdirsSync(path.dirname(usingOptions.cachePath));
+
+  // creates file cache
+  usingOptions.fileCache = fileCache.create({ file: usingOptions.cachePath });
+
   return new Promise((resolve, reject) => {
 
-    executingFontGenerators.reduce((prev, current) => {
+    EXECUTING_FONT_GENERATORS.reduce((prev, current) => {
 
       return prev.then(() => {
 

@@ -11,6 +11,7 @@ const defaultOptions = {
   outputPath: './',
   publishPath: '',
   stylesheetPath: './',
+  cachePath: '.fontcache.json',
   startUnicode: 0xEA01,
   formats: ['eot', 'woff', 'ttf'],
 

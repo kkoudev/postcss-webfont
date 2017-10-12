@@ -1,5 +1,9 @@
+# 1.0.0
+
+- Add `cachePath` option
+
 # 0.0.2
-  
+
 - Fix README.md
 
 # 0.0.1

@@ -75,6 +75,15 @@ Type: `String`
 Default: ``
 
 
+### cachePath
+
+The cache file path of generated fonts.
+
+Type: `String`
+
+Default: `.fontcache.json`
+
+
 ### formats
 
 The output formats of font-face src property.
