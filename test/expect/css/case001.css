@@ -6,7 +6,7 @@
   font-style: normal;
 }
 [class^='iconfont-font-awesome-'], [class*=' iconfont-font-awesome-'] {
-  font-family: 'font-awesome' !important;
+  font-family: 'font-awesome';
   font-style: normal;
   font-weight: normal;
   font-variant: normal;

@@ -1,5 +1,9 @@
 # 1.0.1
 
+- Remove specified 'important' for font-family
+
+# 1.0.1
+
 - Fix README.md
 
 # 1.0.0

@@ -185,7 +185,7 @@ const createWebFontRuleSets = (iconFont, rulesets, glyphs, options) => {
   });
   iconRule.append({
     prop: 'font-family',
-    value: `'${iconFont.fontName}' !important`
+    value: `'${iconFont.fontName}'`
   },
   {
     prop: 'font-style',
