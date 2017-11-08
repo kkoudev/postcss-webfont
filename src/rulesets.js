@@ -214,7 +214,7 @@ const createWebFontRuleSets = (iconFont, rulesets, glyphs, options) => {
   {
     prop: '-moz-osx-font-smoothing',
     value: 'grayscale'
-  },
+  }
   );
   rulesets.root.insertAfter(rulesets.fontFaceRule, iconRule);
 
