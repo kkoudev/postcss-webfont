@@ -1,19 +1,35 @@
-# 1.0.1
+# 1.1.0 (2018-03-02)
 
-- Remove specified 'important' for font-family
+### Fixed
 
-# 1.0.1
+-   Fix unnecessary trailing comma.
 
-- Fix README.md
+### Changed
 
-# 1.0.0
+-   Upgrade versions of all dependencies.
 
-- Add `cachePath` option
+# 1.0.1 (2018-10-13)
 
-# 0.0.2
+### Fixed
 
-- Fix README.md
+-   Fix README.md
 
-# 0.0.1
+### Removed
 
-- Initial release
+-   Specified 'important' for font-family
+
+# 1.0.0 (2018-10-13)
+
+### Added
+
+-   `cachePath` option.
+
+# 0.0.2 (2018-10-11)
+
+### Fixed
+
+-   Fix README.md
+
+# 0.0.1 (2018-10-11)
+
+-   Initial release

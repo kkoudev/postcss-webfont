@@ -59,13 +59,13 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.iconfont-icomoon-arrow-down-left::before {
+.iconfont-icomoon-arrow-down::before {
   content: '\EA01';
 }
-.iconfont-icomoon-arrow-down-right::before {
+.iconfont-icomoon-arrow-down-left::before {
   content: '\EA02';
 }
-.iconfont-icomoon-arrow-down::before {
+.iconfont-icomoon-arrow-down-right::before {
   content: '\EA03';
 }
 .iconfont-icomoon-arrow-left::before {
@@ -74,12 +74,12 @@
 .iconfont-icomoon-arrow-right::before {
   content: '\EA05';
 }
-.iconfont-icomoon-arrow-up-left::before {
+.iconfont-icomoon-arrow-up::before {
   content: '\EA06';
 }
-.iconfont-icomoon-arrow-up-right::before {
+.iconfont-icomoon-arrow-up-left::before {
   content: '\EA07';
 }
-.iconfont-icomoon-arrow-up::before {
+.iconfont-icomoon-arrow-up-right::before {
   content: '\EA08';
 }
