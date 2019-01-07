@@ -14,7 +14,6 @@ const defaultOptions = {
   cachePath: '.fontcache.json',
   startUnicode: 0xEA01,
   formats: ['eot', 'woff', 'ttf'],
-  fontDisplay: 'swap',
   verticalAlign: 'middle'
 
 };

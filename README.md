@@ -102,15 +102,6 @@ Type: `Integer`
 Default: `0xEA01`
 
 
-### fontDisplay
-
-The font-display property value.
-
-Type: `String`
-
-Default: `swap`
-
-
 ### verticalAlign
 
 The vertical-align property value.
@@ -154,6 +145,7 @@ style.css
   src: url('./fonts/*.svg');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 ```
 
@@ -168,6 +160,7 @@ style.css
     url('./fonts/font-awesome.svg?#font-awesome') format('svg');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 [class^='iconfont-font-awesome-']::before, [class*=' iconfont-font-awesome-']::before,
@@ -178,7 +171,6 @@ style.css
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
-  font-display: swap;
   text-transform: none;
   line-height: 1;
   vertical-align: middle;

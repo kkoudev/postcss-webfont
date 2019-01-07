@@ -3,10 +3,12 @@
   src: url('/svg/font-awesome/*.svg');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: 'icomoon';
   src: url('/svg/icomoon/*.svg');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }

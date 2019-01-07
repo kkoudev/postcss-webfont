@@ -4,13 +4,13 @@
   src: url('../fonts/font-awesome.eot?test#iefix') format('embedded-opentype'), url('../fonts/font-awesome.woff?test') format('woff'), url('../fonts/font-awesome.ttf?test') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 [class^='iconfont-font-awesome-']::before, [class*=' iconfont-font-awesome-']::before, [class^='iconfont-before-font-awesome-']::before, [class*=' iconfont-before-font-awesome-']::before, [class^='iconfont-after-font-awesome-']::after, [class*=' iconfont-after-font-awesome-']::after {
   font-family: 'font-awesome';
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
-  font-display: swap;
   text-transform: none;
   line-height: 1;
   vertical-align: middle;
@@ -104,13 +104,13 @@
   src: url('../fonts/icomoon.eot?test#iefix') format('embedded-opentype'), url('../fonts/icomoon.woff?test') format('woff'), url('../fonts/icomoon.ttf?test') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 [class^='iconfont-icomoon-']::before, [class*=' iconfont-icomoon-']::before, [class^='iconfont-before-icomoon-']::before, [class*=' iconfont-before-icomoon-']::before, [class^='iconfont-after-icomoon-']::after, [class*=' iconfont-after-icomoon-']::after {
   font-family: 'icomoon';
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
-  font-display: swap;
   text-transform: none;
   line-height: 1;
   vertical-align: middle;

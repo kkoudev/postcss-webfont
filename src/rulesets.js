@@ -207,10 +207,6 @@ const createWebFontRuleSets = (iconFont, rulesets, glyphs, options) => {
     value: 'normal'
   },
   {
-    prop: 'font-display',
-    value: `${options.fontDisplay}`
-  },
-  {
     prop: 'text-transform',
     value: 'none'
   },
