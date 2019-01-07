@@ -18,27 +18,81 @@
 .iconfont-font-awesome-backward::before {
   content: '\EA01';
 }
+.iconfont-font-awesome-before-backward::before {
+  content: '\EA01';
+}
+.iconfont-font-awesome-after-backward::after {
+  content: '\EA01';
+}
 .iconfont-font-awesome-fast-backward::before {
+  content: '\EA02';
+}
+.iconfont-font-awesome-before-fast-backward::before {
+  content: '\EA02';
+}
+.iconfont-font-awesome-after-fast-backward::after {
   content: '\EA02';
 }
 .iconfont-font-awesome-fast-forward::before {
   content: '\EA03';
 }
+.iconfont-font-awesome-before-fast-forward::before {
+  content: '\EA03';
+}
+.iconfont-font-awesome-after-fast-forward::after {
+  content: '\EA03';
+}
 .iconfont-font-awesome-forward::before {
+  content: '\EA04';
+}
+.iconfont-font-awesome-before-forward::before {
+  content: '\EA04';
+}
+.iconfont-font-awesome-after-forward::after {
   content: '\EA04';
 }
 .iconfont-font-awesome-pause::before {
   content: '\EA05';
 }
+.iconfont-font-awesome-before-pause::before {
+  content: '\EA05';
+}
+.iconfont-font-awesome-after-pause::after {
+  content: '\EA05';
+}
 .iconfont-font-awesome-play::before {
+  content: '\EA06';
+}
+.iconfont-font-awesome-before-play::before {
+  content: '\EA06';
+}
+.iconfont-font-awesome-after-play::after {
   content: '\EA06';
 }
 .iconfont-font-awesome-step-backward::before {
   content: '\EA07';
 }
+.iconfont-font-awesome-before-step-backward::before {
+  content: '\EA07';
+}
+.iconfont-font-awesome-after-step-backward::after {
+  content: '\EA07';
+}
 .iconfont-font-awesome-step-forward::before {
   content: '\EA08';
 }
+.iconfont-font-awesome-before-step-forward::before {
+  content: '\EA08';
+}
+.iconfont-font-awesome-after-step-forward::after {
+  content: '\EA08';
+}
 .iconfont-font-awesome-stop::before {
+  content: '\EA09';
+}
+.iconfont-font-awesome-before-stop::before {
+  content: '\EA09';
+}
+.iconfont-font-awesome-after-stop::after {
   content: '\EA09';
 }

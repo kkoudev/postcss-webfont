@@ -1,3 +1,9 @@
+# 1.3.0 (2019-01-07)
+
+### Added
+
+-   *::after rulesets supported.
+
 # 1.2.0 (2019-01-07)
 
 ### Fixed
