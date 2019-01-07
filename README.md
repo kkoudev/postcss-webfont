@@ -166,7 +166,7 @@ style.css
 [class^='iconfont-font-awesome-']::before, [class*=' iconfont-font-awesome-']::before,
 [class^='iconfont-before-font-awesome-']::before, [class*=' iconfont-before-font-awesome-']::before,
 [class^='iconfont-after-font-awesome-']::after, [class*=' iconfont-after-font-awesome-']::after {
-  font-family: 'font-awesome';
+  font-family: 'font-awesome', sans-serif;
   speak: none;
   font-style: normal;
   font-weight: normal;

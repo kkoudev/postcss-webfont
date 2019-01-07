@@ -1,3 +1,9 @@
+# 2.2.0 (2019-01-07)
+
+### Added
+
+-   "sans-serif" in "font-family" property.
+
 # 2.1.1 (2019-01-07)
 
 ### Added
