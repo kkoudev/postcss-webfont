@@ -1,3 +1,9 @@
+# 2.1.0 (2019-01-07)
+
+### Added
+
+-   "fontDisplay" and "verticalAlign" options.
+
 # 2.0.0 (2019-01-07)
 
 ### Changed

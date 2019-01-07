@@ -207,12 +207,20 @@ const createWebFontRuleSets = (iconFont, rulesets, glyphs, options) => {
     value: 'normal'
   },
   {
+    prop: 'font-display',
+    value: `${options.fontDisplay}`
+  },
+  {
     prop: 'text-transform',
     value: 'none'
   },
   {
     prop: 'line-height',
     value: '1'
+  },
+  {
+    prop: 'vertical-align',
+    value: `${options.verticalAlign}`
   },
   {
     prop: '-webkit-font-smoothing',

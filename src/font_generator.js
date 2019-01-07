@@ -48,7 +48,7 @@ const existsFontFiles = (options) => {
 
   }
 
-}
+};
 
 // Font generators.
 const FONT_GENERATORS = {
@@ -82,13 +82,8 @@ const FONT_GENERATORS = {
 
         let isUpdated = false;
 
-        // Font file not exists?
-        if (!existsFontFiles(options)) {
-
-          // Force updated
-          isUpdated = true;
-
-        } else {
+        // Font file exists?
+        if (existsFontFiles(options)) {
 
           // for each svg files
           Object.keys(cacheSVGFont.fileMTimes).some((key) => {
@@ -123,6 +118,11 @@ const FONT_GENERATORS = {
             return;
 
           }
+
+        } else {
+
+          // Force updated
+          isUpdated = true;
 
         }
 

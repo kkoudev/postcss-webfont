@@ -10,8 +10,10 @@
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
+  font-display: swap;
   text-transform: none;
   line-height: 1;
+  vertical-align: middle;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -108,8 +110,10 @@
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
+  font-display: swap;
   text-transform: none;
   line-height: 1;
+  vertical-align: middle;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

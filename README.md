@@ -102,6 +102,24 @@ Type: `Integer`
 Default: `0xEA01`
 
 
+### fontDisplay
+
+The font-display property value.
+
+Type: `String`
+
+Default: `swap`
+
+
+### verticalAlign
+
+The vertical-align property value.
+
+Type: `String`
+
+Default: `middle`
+
+
 ### svgicons2svgfont options
 
 The options of [svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont#new-svgicons2svgfontstreamoptions) are available:
@@ -160,8 +178,10 @@ style.css
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
+  font-display: swap;
   text-transform: none;
   line-height: 1;
+  vertical-align: middle;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
