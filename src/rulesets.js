@@ -181,7 +181,14 @@ const createWebFontRuleSets = (iconFont, rulesets, glyphs, options) => {
 
   // append base ruleset
   const iconRule = postcss.rule({
-    selectors: [`[class^='iconfont-${iconFont.fontName}-']`, `[class*=' iconfont-${iconFont.fontName}-']`]
+    selectors: [
+      `[class^='iconfont-${iconFont.fontName}-']::before`,
+      `[class*=' iconfont-${iconFont.fontName}-']::before`,
+      `[class^='iconfont-before-${iconFont.fontName}-']::before`,
+      `[class*=' iconfont-before-${iconFont.fontName}-']::before`,
+      `[class^='iconfont-after-${iconFont.fontName}-']::after`,
+      `[class*=' iconfont-after-${iconFont.fontName}-']::after`,
+    ]
   });
   iconRule.append({
     prop: 'font-family',
@@ -228,7 +235,7 @@ const createWebFontRuleSets = (iconFont, rulesets, glyphs, options) => {
 
       const fontRule = postcss.rule({
         selector: pseudoName
-          ? `.iconfont-${iconFont.fontName}-${pseudoName}-${glyph.name}::${pseudoName}`
+          ? `.iconfont-${pseudoName}-${iconFont.fontName}-${glyph.name}::${pseudoName}`
           : `.iconfont-${iconFont.fontName}-${glyph.name}::before`
       });
       fontRule.append({

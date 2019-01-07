@@ -152,8 +152,10 @@ style.css
   font-style: normal;
 }
 
-[class^='iconfont-font-awesome-'], [class*=' iconfont-font-awesome-'] {
-  font-family: 'font-awesome' !important;
+[class^='iconfont-font-awesome-']::before, [class*=' iconfont-font-awesome-']::before,
+[class^='iconfont-before-font-awesome-']::before, [class*=' iconfont-before-font-awesome-']::before,
+[class^='iconfont-after-font-awesome-']::after, [class*=' iconfont-after-font-awesome-']::after {
+  font-family: 'font-awesome';
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -166,7 +168,10 @@ style.css
 .iconfont-font-awesome-arrow-up-left::before {
   content: '\EA01';
 }
-.iconfont-font-awesome-arrow-up-right::before {
+.iconfont-before-font-awesome-arrow-up-left::before {
+  content: '\EA01';
+}
+.iconfont-after-font-awesome-arrow-up-right::after {
   content: '\EA02';
 }
 ```
