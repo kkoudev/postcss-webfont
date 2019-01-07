@@ -1,3 +1,13 @@
+# 1.2.0 (2019-01-07)
+
+### Fixed
+
+-   No generate cached no-updating font files.
+
+### Changed
+
+-   Upgrade versions of all dependencies.
+
 # 1.1.0 (2018-03-02)
 
 ### Fixed

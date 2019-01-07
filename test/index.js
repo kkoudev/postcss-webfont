@@ -8,6 +8,10 @@ const postcss = require('postcss');
 const test    = require('ava');
 const plugin  = require('..');
 
+// Default PostCSS options
+const defaultPostCSSOptions = {
+  from: null,
+};
 
 // ------------------------------
 // Utility functions
@@ -25,7 +29,7 @@ const postcssProcess = (cssPath, options, postcssOptions) => {
   return postcss([plugin(options)])
     .process(
       fs.readFileSync(path.resolve(__dirname, cssPath), 'UTF-8'),
-      postcssOptions
+      postcssOptions || defaultPostCSSOptions
     );
 
 };
@@ -45,7 +49,7 @@ test('generate webfonts - case001', (t) => {
       stylesheetPath: './css',
       outputPath: './test/expect/fonts',
       fixedHash: 'test',
-    }
+    },
   ).then((result) => {
 
     t.is(result.css, fs.readFileSync(path.resolve(__dirname, 'expect/css/case001.css'), 'UTF-8'));
@@ -71,4 +75,4 @@ test('generate webfonts - case002', (t) => {
 
   });
 
-})
+});

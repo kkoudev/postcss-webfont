@@ -25,6 +25,31 @@ const EXECUTING_FONT_GENERATORS = [
   ]
 ];
 
+/**
+ * Check exixting font files.
+ * @param {object} options generating options
+ * @returns {boolean} exists font files or not
+ */
+const existsFontFiles = (options) => {
+
+  try {
+
+    options.fontOptions.formats.forEach((format) => {
+
+      fs.statSync(path.resolve(options.dest, `${options.fontOptions.fontName}.${format}`));
+
+    });
+
+    return true;
+
+  } catch (err) {
+
+    return false;
+
+  }
+
+}
+
 // Font generators.
 const FONT_GENERATORS = {
 
@@ -38,7 +63,7 @@ const FONT_GENERATORS = {
       const sortedFiles       = options.files.slice(0).sort((file1, file2) => fileSorter(file1, file2));
       const fileMTimes        = {};
       const simpleGlyphs      = [];
-      let   fontBuffer        = new Buffer(0);
+      let   fontBuffer        = Buffer.alloc(0);
 
       // for each sorted files.
       sortedFiles.forEach((file) => {
@@ -57,37 +82,47 @@ const FONT_GENERATORS = {
 
         let isUpdated = false;
 
-        // for each svg files
-        Object.keys(cacheSVGFont.fileMTimes).some((key) => {
+        // Font file not exists?
+        if (!existsFontFiles(options)) {
 
-          // not equals mtime?
-          if (!(key in fileMTimes) || fileMTimes[key] !== cacheSVGFont.fileMTimes[key]) {
+          // Force updated
+          isUpdated = true;
 
-            // require updating
-            isUpdated = true;
+        } else {
 
-            // break loop
-            return true;
+          // for each svg files
+          Object.keys(cacheSVGFont.fileMTimes).some((key) => {
+
+            // not equals mtime?
+            if (!(key in fileMTimes) || fileMTimes[key] !== cacheSVGFont.fileMTimes[key]) {
+
+              // require updating
+              isUpdated = true;
+
+              // break loop
+              return true;
+
+            }
+
+            // contnue loop
+            return false;
+
+          });
+
+          // Not require updating?
+          if (!isUpdated) {
+
+            // append metadata list
+            options.glyphs = cacheSVGFont.simpleGlyphs;
+
+            // put font buffer
+            options.fontBufferTable.svg = null;
+
+            // noop
+            resolve();
+            return;
 
           }
-
-          // contnue loop
-          return false;
-
-        });
-
-        // Not require updating?
-        if (!isUpdated) {
-
-          // append metadata list
-          options.glyphs = cacheSVGFont.simpleGlyphs;
-
-          // put font buffer
-          options.fontBufferTable.svg = null;
-
-          // noop
-          resolve();
-          return;
 
         }
 
@@ -214,7 +249,7 @@ const FONT_GENERATORS = {
 
       // Creates svg2ttf data
       const font       = svg2ttf(options.fontBufferTable.svg, {});
-      const fontBuffer = new Buffer(font.buffer);
+      const fontBuffer = Buffer.from(font.buffer);
 
       // Creates writing buffers
       writeStream.on('finish', () => {
@@ -261,7 +296,7 @@ const FONT_GENERATORS = {
 
       // Creates ttf2woff data
       const font       = ttf2woff(new Uint8Array(options.fontBufferTable.ttf), {});
-      const fontBuffer = new Buffer(font.buffer);
+      const fontBuffer = Buffer.from(font.buffer);
 
       // Creates writing buffers
       writeStream.on('finish', () => {
@@ -305,7 +340,7 @@ const FONT_GENERATORS = {
 
       // Creates ttf2woff2 data
       const font       = ttf2woff2(new Uint8Array(options.fontBufferTable.ttf), {});
-      const fontBuffer = new Buffer(font.buffer);
+      const fontBuffer = Buffer.from(font.buffer);
 
       // Creates writing buffers
       writeStream.on('finish', () => {
@@ -349,7 +384,7 @@ const FONT_GENERATORS = {
 
       // Creates ttf2eot data
       const font       = ttf2eot(new Uint8Array(options.fontBufferTable.ttf), {});
-      const fontBuffer = new Buffer(font.buffer);
+      const fontBuffer = Buffer.from(font.buffer);
 
       // Creates writing buffers
       writeStream.on('finish', () => {
