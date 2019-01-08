@@ -95,7 +95,7 @@ const createFontFaceSrcProperty = (iconFont, options) => {
   const fontPath = path.relative(
     path.resolve(options.publishPath, options.stylesheetPath),
     path.join(options.outputPath, iconFont.fontName)
-  );
+  ).replace(/\\/g, path.posix.sep);
 
   const srcFormats = [];
 
