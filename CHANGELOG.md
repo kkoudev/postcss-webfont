@@ -1,3 +1,9 @@
+# 2.2.1 (2019-01-08)
+
+### Fixed
+
+-   Fixed font path for windows from @okamoai.
+
 # 2.2.0 (2019-01-07)
 
 ### Added
