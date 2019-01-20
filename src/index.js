@@ -14,7 +14,10 @@ const defaultOptions = {
   cachePath: '.fontcache.json',
   startUnicode: 0xEA01,
   formats: ['eot', 'woff', 'ttf'],
-  verticalAlign: 'middle'
+  verticalAlign: 'middle',
+  classNamePrefix: 'iconfont',
+  classNameBeforePrefix: 'iconfont-before',
+  classNameAfterPrefix: 'iconfont-after'
 
 };
 

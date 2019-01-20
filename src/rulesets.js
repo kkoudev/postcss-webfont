@@ -180,16 +180,31 @@ const createWebFontRuleSets = (iconFont, rulesets, glyphs, options) => {
   }
 
   // append base ruleset
-  const iconRule = postcss.rule({
-    selectors: [
-      `[class^='iconfont-${iconFont.fontName}-']::before`,
-      `[class*=' iconfont-${iconFont.fontName}-']::before`,
-      `[class^='iconfont-before-${iconFont.fontName}-']::before`,
-      `[class*=' iconfont-before-${iconFont.fontName}-']::before`,
-      `[class^='iconfont-after-${iconFont.fontName}-']::after`,
-      `[class*=' iconfont-after-${iconFont.fontName}-']::after`,
-    ]
-  });
+  const selectors = [
+    `[class^='${options.classNamePrefix}-${iconFont.fontName}-']::before`,
+    `[class*=' ${options.classNamePrefix}-${iconFont.fontName}-']::before`,
+  ];
+
+  if (options.classNameBeforePrefix) {
+
+    selectors.push(
+      `[class^='${options.classNameBeforePrefix}-${iconFont.fontName}-']::before`,
+      `[class*=' ${options.classNameBeforePrefix}-${iconFont.fontName}-']::before`,
+    );
+
+  }
+
+  if (options.classNameAfterPrefix) {
+
+    selectors.push(
+      `[class^='${options.classNameAfterPrefix}-${iconFont.fontName}-']::after`,
+      `[class*=' ${options.classNameAfterPrefix}-${iconFont.fontName}-']::after`,
+    );
+
+  }
+
+  const iconRule = postcss.rule({ selectors });
+
   iconRule.append({
     prop: 'font-family',
     value: `'${iconFont.fontName}', sans-serif`
@@ -235,13 +250,24 @@ const createWebFontRuleSets = (iconFont, rulesets, glyphs, options) => {
   // append glyphs
   glyphs.forEach((glyph) => {
 
-    [null, 'before', 'after'].forEach((pseudoName) => {
+    const glyphSelectors = [`.${options.classNamePrefix}-${iconFont.fontName}-${glyph.name}::before`];
 
-      const fontRule = postcss.rule({
-        selector: pseudoName
-          ? `.iconfont-${pseudoName}-${iconFont.fontName}-${glyph.name}::${pseudoName}`
-          : `.iconfont-${iconFont.fontName}-${glyph.name}::before`
-      });
+    if (options.classNameBeforePrefix) {
+
+      glyphSelectors.push(`.${options.classNameBeforePrefix}-${iconFont.fontName}-${glyph.name}::before`);
+
+    }
+
+    if (options.classNameAfterPrefix) {
+
+      glyphSelectors.push(`.${options.classNameAfterPrefix}-${iconFont.fontName}-${glyph.name}::after`);
+
+    }
+
+    glyphSelectors.forEach((selector) => {
+
+      const fontRule = postcss.rule({ selector });
+
       fontRule.append({
         prop: 'content',
         value: `'\\${glyph.codepoint.toString(16).toUpperCase()}'`
