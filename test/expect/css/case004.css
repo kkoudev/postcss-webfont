@@ -1,0 +1,100 @@
+@font-face {
+  font-family: 'font-awesome';
+  src: url('../fonts/font-awesome.eot?test');
+  src: url('../fonts/font-awesome.eot?test#iefix') format('embedded-opentype'), url('../fonts/font-awesome.woff?test') format('woff'), url('../fonts/font-awesome.ttf?test') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+[class^='iconfontchange-font-awesome-']::before, [class*=' iconfontchange-font-awesome-']::before, [class^='iconfontchange-beforechange-font-awesome-']::before, [class*=' iconfontchange-beforechange-font-awesome-']::before, [class^='iconfontchange-after-font-awesome-']::after, [class*=' iconfontchange-after-font-awesome-']::after {
+  font-family: 'font-awesome', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.iconfontchange-font-awesome-backward::before {
+  content: '\EA01';
+}
+.iconfontchange-beforechange-font-awesome-backward::before {
+  content: '\EA01';
+}
+.iconfontchange-after-font-awesome-backward::after {
+  content: '\EA01';
+}
+.iconfontchange-font-awesome-fast-backward::before {
+  content: '\EA02';
+}
+.iconfontchange-beforechange-font-awesome-fast-backward::before {
+  content: '\EA02';
+}
+.iconfontchange-after-font-awesome-fast-backward::after {
+  content: '\EA02';
+}
+.iconfontchange-font-awesome-fast-forward::before {
+  content: '\EA03';
+}
+.iconfontchange-beforechange-font-awesome-fast-forward::before {
+  content: '\EA03';
+}
+.iconfontchange-after-font-awesome-fast-forward::after {
+  content: '\EA03';
+}
+.iconfontchange-font-awesome-forward::before {
+  content: '\EA04';
+}
+.iconfontchange-beforechange-font-awesome-forward::before {
+  content: '\EA04';
+}
+.iconfontchange-after-font-awesome-forward::after {
+  content: '\EA04';
+}
+.iconfontchange-font-awesome-pause::before {
+  content: '\EA05';
+}
+.iconfontchange-beforechange-font-awesome-pause::before {
+  content: '\EA05';
+}
+.iconfontchange-after-font-awesome-pause::after {
+  content: '\EA05';
+}
+.iconfontchange-font-awesome-play::before {
+  content: '\EA06';
+}
+.iconfontchange-beforechange-font-awesome-play::before {
+  content: '\EA06';
+}
+.iconfontchange-after-font-awesome-play::after {
+  content: '\EA06';
+}
+.iconfontchange-font-awesome-step-backward::before {
+  content: '\EA07';
+}
+.iconfontchange-beforechange-font-awesome-step-backward::before {
+  content: '\EA07';
+}
+.iconfontchange-after-font-awesome-step-backward::after {
+  content: '\EA07';
+}
+.iconfontchange-font-awesome-step-forward::before {
+  content: '\EA08';
+}
+.iconfontchange-beforechange-font-awesome-step-forward::before {
+  content: '\EA08';
+}
+.iconfontchange-after-font-awesome-step-forward::after {
+  content: '\EA08';
+}
+.iconfontchange-font-awesome-stop::before {
+  content: '\EA09';
+}
+.iconfontchange-beforechange-font-awesome-stop::before {
+  content: '\EA09';
+}
+.iconfontchange-after-font-awesome-stop::after {
+  content: '\EA09';
+}
