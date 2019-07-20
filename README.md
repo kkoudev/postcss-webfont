@@ -147,6 +147,29 @@ Type: `String`
 Default: `after`
 
 
+### cachebuster
+
+The cachebuster type.  
+To disable is specified null or undefined.
+
+Cachebuster types:
+  * hash  : Generating font hash.
+  * fixed : Fixed cachebuster. The fixed value is specified `cachebusterFixed` option.
+
+Type: `String`
+
+Default: `hash`
+
+
+### cachebusterFixed
+
+The fixed cachebuster value.
+
+Type: `String`
+
+Default: ``
+
+
 ### svgicons2svgfont options
 
 The options of [svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont#new-svgicons2svgfontstreamoptions) are available:

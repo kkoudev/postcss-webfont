@@ -3,6 +3,7 @@
  */
 const fs                        = require('fs-extra');
 const path                      = require('path');
+const crc                       = require('crc');
 const fileCache                 = require('node-file-cache');
 const SVGIcons2SVGFontStream    = require('svgicons2svgfont');
 const fileSorter                = require('svgicons2svgfont/src/filesorter');
@@ -112,6 +113,7 @@ const FONT_GENERATORS = {
 
             // put font buffer
             options.fontBufferTable.svg = null;
+            options.fontBufferTable.svgHash = cacheSVGFont.svgHash;
 
             // noop
             resolve();
@@ -141,13 +143,19 @@ const FONT_GENERATORS = {
         // append metadata list
         options.glyphs = simpleGlyphs;
 
+        // creates svg file content
+        const svgFileContent = fontBuffer.toString();
+        const svgHash = crc.crc32(svgFileContent).toString(16);
+
         // put font buffer
-        options.fontBufferTable.svg = fontBuffer.toString();
+        options.fontBufferTable.svg = svgFileContent;
+        options.fontBufferTable.svgHash = svgHash;
 
         // cache svg font
         cacheSVGFontTable[options.fontOptions.fontName] = {
           simpleGlyphs,
-          fileMTimes
+          fileMTimes,
+          svgHash,
         };
         options.fileCache.set(CACHE_KEY_SVG_FONT_TABLE, cacheSVGFontTable);
 
@@ -476,8 +484,8 @@ module.exports = (options) => {
 
     }, Promise.resolve()).then(() => {
 
-      // returns glyphs
-      resolve(usingOptions.glyphs);
+      // returns glyphs and svgHash
+      resolve({ glyphs: usingOptions.glyphs, svgHash: usingOptions.fontBufferTable.svgHash });
 
     }).catch((error) => {
 

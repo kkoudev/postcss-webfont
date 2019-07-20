@@ -140,7 +140,7 @@ rules:
   }]
   no-undef-init           : 2
   no-undef                : 1
-  no-undefined            : 2
+  no-undefined            : 0
   no-unused-vars          : 2
   no-use-before-define    : [1, "nofunc"]
 
