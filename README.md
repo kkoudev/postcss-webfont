@@ -102,6 +102,15 @@ Type: `Integer`
 Default: `0xEA01`
 
 
+### prependUnicode
+
+Prefix files with their automatically allocated unicode code point.
+
+Type: `Boolean`
+
+Default: `false`
+
+
 ### verticalAlign
 
 The vertical-align property value.
@@ -109,6 +118,33 @@ The vertical-align property value.
 Type: `String`
 
 Default: `middle`
+
+
+### classNamePrefix
+
+The generating class name prefix.
+
+Type: `String`
+
+Default: `iconfont`
+
+
+### classNamePrefixBefore
+
+The generating class name prefix for before pseudo element.
+
+Type: `String`
+
+Default: `before`
+
+
+### classNamePrefixAfter
+
+The generating class name prefix for after pseudo element.
+
+Type: `String`
+
+Default: `after`
 
 
 ### svgicons2svgfont options
