@@ -1,3 +1,13 @@
+# 3.0.0 (2019-07-21)
+
+### Added
+
+-   "cachebuster" and "cachebusterFixed" options.
+
+### Removed
+
+-   "fixedHash" option. Use "cachebusterFixed" option instead.
+
 # 2.3.0 (2019-07-20)
 
 ### Added
