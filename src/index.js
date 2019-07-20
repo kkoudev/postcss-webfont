@@ -19,6 +19,8 @@ const defaultOptions = {
   classNamePrefix: 'iconfont',
   classNamePrefixBefore: 'before',
   classNamePrefixAfter: 'after',
+  cachebuster: 'hash',
+  cachebusterFixed: '',
 
 };
 

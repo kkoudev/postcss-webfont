@@ -1,11 +1,13 @@
 {
   "name": "postcss-webfont",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "description": "PostCSS plugin to generate iconfonts from stylesheets.",
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint ./src --fix",
-    "test": "ava --verbose"
+    "clean": "rimraf .fontcache.json",
+    "test:exec": "ava --verbose",
+    "test": "run-s clean test:exec"
   },
   "keywords": [
     "iconfont",
@@ -24,6 +26,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "crc": "^3.8.0",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
     "node-file-cache": "^1.0.2",
@@ -38,6 +41,8 @@
   "devDependencies": {
     "ava": "^1.4.1",
     "babel-eslint": "^10.0.2",
-    "eslint": "^5.16.0"
+    "eslint": "^5.16.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^2.6.3"
   }
 }
