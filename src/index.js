@@ -13,6 +13,7 @@ const defaultOptions = {
   stylesheetPath: './',
   cachePath: '.fontcache.json',
   startUnicode: 0xEA01,
+  prependUnicode: false,
   formats: ['eot', 'woff', 'ttf'],
   verticalAlign: 'middle'
 
