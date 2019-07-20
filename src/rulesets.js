@@ -66,6 +66,7 @@ const createFonts = (iconFont, rulesets, options) => {
         fixedWidth: options.fixedWidth,
         fixedHash: options.fixedHash,
         startUnicode: options.startUnicode,
+        prependUnicode: options.prependUnicode,
       }
     }).then((glyphs) => {
 
