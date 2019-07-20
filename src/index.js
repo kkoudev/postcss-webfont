@@ -15,7 +15,10 @@ const defaultOptions = {
   startUnicode: 0xEA01,
   prependUnicode: false,
   formats: ['eot', 'woff', 'ttf'],
-  verticalAlign: 'middle'
+  verticalAlign: 'middle',
+  classNamePrefix: 'iconfont',
+  classNamePrefixBefore: 'before',
+  classNamePrefixAfter: 'after',
 
 };
 
