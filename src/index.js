@@ -21,10 +21,11 @@ const defaultOptions = {
   classNamePrefixAfter: 'after',
   cachebuster: 'hash',
   cachebusterFixed: '',
+  glyphNormalizer: glyph => glyph
 
 };
 
-module.exports = postcss.plugin('postcss-webfont', (options) => {
+const defaultExport = postcss.plugin('postcss-webfont', (options) => {
 
   const usingOptions = Object.assign({}, defaultOptions, options);
 
@@ -35,3 +36,18 @@ module.exports = postcss.plugin('postcss-webfont', (options) => {
   };
 
 });
+
+defaultExport.onlyCss = postcss.plugin('postcss-webfont-css', (options) => {
+
+  const usingOptions = Object.assign({}, defaultOptions, options);
+
+  return (root) => {
+
+    return rulesets(root, usingOptions);
+
+  };
+
+});
+
+
+module.exports = defaultExport;

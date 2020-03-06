@@ -9,7 +9,6 @@ const createFonts           = require('./createFonts');
 const createWebFontRuleSets = require('./createWebFontRuleSets');
 
 
-
 /**
  * Parsing font-face rulesets.
  *
@@ -18,9 +17,6 @@ const createWebFontRuleSets = require('./createWebFontRuleSets');
  * @returns {Promise} promise object.
  */
 const processFontFace = (rulesets, options) => {
-
-  return new Promise((resolve, reject) => {
-
     const iconFont = {};
 
     // Get 'font-family' property.
@@ -57,65 +53,19 @@ const processFontFace = (rulesets, options) => {
 
     });
 
-    // creates fonts
-    createFonts(iconFont, rulesets, options).then((fontResult) => {
+    const files   = [].concat(glob.sync(iconFont.src));
 
-      // creates rulesets
-      if (fontResult) {
+    if (!files.length) return void;
 
-        // Select cachebuster time option.
-        if (options.cachebuster !== null && options.cachebuster !== undefined) {
+    const glyphs = files
+      .map(file => ({
+        name: path.basename(file),
+        conent: `url('${file}')`
+      }))
+      .map(options.glyphNormalizer);
 
-          const useCachebuster = options.cachebuster.toString().toLowerCase();
-
-          // Select cachebuster option
-          switch (useCachebuster) {
-
-            // hash cachebuster
-            case 'hash':
-              iconFont.fontHash = fontResult.svgHash;
-              break;
-
-            // fixed cachebuster
-            case 'fixed':
-              iconFont.fontHash = options.cachebusterFixed;
-              break;
-
-            // Disable cachebuster
-            default:
-              iconFont.fontHash = null;
-              break;
-
-          }
-
-        } else {
-
-          // Disable cachebuster
-          iconFont.fontHash = null;
-
-        }
-        const glyphs = fontResult.glyphs.map(glyph => ({
-          name: glyph.name,
-          conent: `'\\${glyph.codepoint.toString(16).toUpperCase()}'`
-        }));
-
-        // creates rulesets
-        createWebFontRuleSets(iconFont, rulesets, glyphs, options);
-
-      }
-
-      // returns successful
-      resolve();
-
-    }).catch((error) => {
-
-      // returns error
-      reject(error);
-
-    });
-
-  });
-
+    // creates rulesets
+    createWebFontRuleSets(iconFont, rulesets, glyphs, options);
 };
 
 
