@@ -33,7 +33,7 @@ module.exports = async(root, options) => {
     cachePath: options.cachePath,
     fontOptions: {
       formats: options.formats,
-      fontName: iconFont.fontName,
+      fontName: options.fontName,
       fontHeight: options.fontHeight,
       ascent: options.ascent,
       descent: options.descent,
