@@ -15,20 +15,21 @@ module.exports = async(root, options) => {
   root.walkDecls(
     'content',
     decl => {
-      if (!options.iconsBaseMatch.match(decl.value)) return;
+      if (!options.contentIconMatch.exec(decl.value)) return;
 
       contents.push({
         decl,
-        file: decl.value.replace(/^\s*url\(['"]?([^'")])['"]?\)/, '$1')
+        file: decl.value.replace(/^\s*url\(['"]?([^'")])+['"]?\)/, '$1')
       });
 
     }
   );
 
   if (!contents.length) return;
+  const files = Array.from(new Set(contents.map(({ file }) => file)));
 
   const fontResult = await fontGenerator({
-    files: contents.map(({ file }) => file),
+    files,
     dest: path.resolve(options.outputPath),
     cachePath: options.cachePath,
     fontOptions: {
