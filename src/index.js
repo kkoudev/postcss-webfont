@@ -3,6 +3,8 @@
  */
 const postcss   = require('postcss');
 const rulesets  = require('./rulesets');
+const cssrulesets = require('./css_generator');
+const font_from_rulesets = require('./css_font_generator');
 
 // default options
 const defaultOptions = {
@@ -43,7 +45,23 @@ defaultExport.onlyCss = postcss.plugin('postcss-webfont-css', (options) => {
 
   return (root) => {
 
-    return rulesets(root, usingOptions);
+    return cssrulesets(root, usingOptions);
+
+  };
+
+});
+
+defaultExport.onlyFont = postcss.plugin('postcss-webfont-font', (options) => {
+
+  const usingOptions = Object.assign(
+    { contentIconMatch: /.+\.svg/ },
+    defaultOptions,
+    options
+  );
+
+  return (root) => {
+
+    return font_from_rulesets(root, usingOptions);
 
   };
 

@@ -55,12 +55,12 @@ const processFontFace = (rulesets, options) => {
 
     const files   = [].concat(glob.sync(iconFont.src));
 
-    if (!files.length) return void;
+    if (!files.length) return;
 
     const glyphs = files
       .map(file => ({
-        name: path.basename(file),
-        conent: `url('${file}')`
+        name: path.basename(file, '.svg'),
+        content: `url('${file}')`
       }))
       .map(options.glyphNormalizer);
 

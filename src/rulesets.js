@@ -3,7 +3,6 @@
  */
 const postcss           = require('postcss');
 const path              = require('path');
-const glob              = require('glob');
 
 const createFonts           = require('./createFonts');
 const createWebFontRuleSets = require('./createWebFontRuleSets');
@@ -94,10 +93,12 @@ const processFontFace = (rulesets, options) => {
           iconFont.fontHash = null;
 
         }
-        const glyphs = fontResult.glyphs.map(glyph => ({
-          name: glyph.name,
-          content: `'\\${glyph.codepoint.toString(16).toUpperCase()}'`
-        }));
+        const glyphs = fontResult.glyphs
+          .map(glyph => ({
+            name: glyph.name,
+            content: `'\\${glyph.codepoint.toString(16).toUpperCase()}'`
+          }))
+          .map(options.glyphNormalizer);
 
         // creates rulesets
         createWebFontRuleSets(iconFont, rulesets, glyphs, options);
