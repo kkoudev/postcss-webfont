@@ -1,7 +1,8 @@
+const path              = require('path');
 const stringTemplate    = require('string-template');
 
 // Templates src property by font type
-module.export = {
+const srcPropertyTemplates = {
 
   eotIE: 'url(\'{fontPath}.eot{fontHash}\')',
   eot: 'url(\'{fontPath}.eot{fontHash}#iefix\') format(\'embedded-opentype\')',

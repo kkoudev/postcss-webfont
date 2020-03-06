@@ -96,7 +96,7 @@ const processFontFace = (rulesets, options) => {
         }
         const glyphs = fontResult.glyphs.map(glyph => ({
           name: glyph.name,
-          conent: `'\\${glyph.codepoint.toString(16).toUpperCase()}'`
+          content: `'\\${glyph.codepoint.toString(16).toUpperCase()}'`
         }));
 
         // creates rulesets

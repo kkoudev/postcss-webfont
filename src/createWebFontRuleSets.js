@@ -1,3 +1,4 @@
+const postcss           = require('postcss');
 const {
   createFontFaceSrcProperty,
   createFontFaceSrcPropertyWithEOT
@@ -117,7 +118,7 @@ module.exports = (iconFont, rulesets, glyphs, options) => {
       });
       fontRule.append({
         prop: 'content',
-        value: `'\\${glyph.codepoint.toString(16).toUpperCase()}'`
+        value: glyph.content
       });
 
       // insert ruleset
