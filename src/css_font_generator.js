@@ -19,7 +19,7 @@ module.exports = async(root, options) => {
 
       contents.push({
         decl,
-        file: decl.value.replace(/^\s*url\(['"]?([^'")])+['"]?\)/, '$1')
+        file: decl.value.replace(/^\s*url\(['"]?([^'")]+)['"]?\)/, '$1')
       });
 
     }
