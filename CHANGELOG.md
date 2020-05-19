@@ -1,3 +1,9 @@
+# 3.1.1 (2020-05-10)
+
+### Fixed
+
+-   Dependency alerts.
+
 # 3.1.0 (2020-05-10)
 
 ### Changed

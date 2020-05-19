@@ -1,6 +1,6 @@
 {
   "name": "postcss-webfont",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "PostCSS plugin to generate iconfonts from stylesheets.",
   "main": "src/index.js",
   "scripts": {
