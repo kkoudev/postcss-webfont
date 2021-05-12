@@ -30,7 +30,7 @@
     "fs-extra": "^9.0.0",
     "glob": "^7.1.6",
     "node-file-cache": "^1.0.2",
-    "postcss": "^7.0.30",
+    "postcss": "^8.2.10",
     "string-template": "^1.0.0",
     "svg2ttf": "^4.3.0",
     "svgicons2svgfont": "^9.1.1",
