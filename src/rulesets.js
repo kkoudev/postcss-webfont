@@ -248,10 +248,21 @@ const createWebFontRuleSets = (iconFont, rulesets, glyphs, options) => {
   rulesets.root.insertAfter(rulesets.fontFaceRule, iconRule);
 
 
-  let baseRule = iconRule;
+ let baseRule = iconRule
+		, vars = postcss.rule({
+		selector: ':root',
+	});
 
   // append glyphs
   glyphs.forEach((glyph) => {
+
+		let glyphVal = glyph.codepoint.toString(16).toUpperCase()
+
+		// add css vars
+		vars = vars.append({
+			prop: `--${iconFont.fontName}-${glyph.name}`,
+			value: `'\\${glyphVal}'`
+		});
 
     [
       {
@@ -273,7 +284,7 @@ const createWebFontRuleSets = (iconFont, rulesets, glyphs, options) => {
       });
       fontRule.append({
         prop: 'content',
-        value: `'\\${glyph.codepoint.toString(16).toUpperCase()}'`
+        value: `'\\${glyphVal}'`
       });
 
       // insert ruleset
@@ -285,6 +296,9 @@ const createWebFontRuleSets = (iconFont, rulesets, glyphs, options) => {
     });
 
   });
+
+	// Insert Vars
+	rulesets.root.insertAfter(baseRule, vars);
 
 };
 
