@@ -24,14 +24,17 @@ const defaultOptions = {
 
 };
 
-module.exports = postcss.plugin('postcss-webfont', (options) => {
+module.exports = (options) => {
 
   const usingOptions = Object.assign({}, defaultOptions, options);
 
-  return (root) => {
+  return {
+    postcssPlugin: 'postcss-webfont',
+    Once (root) {
 
-    return rulesets(root, usingOptions);
+      return rulesets(root, usingOptions);
 
+    },
   };
 
-});
+};
