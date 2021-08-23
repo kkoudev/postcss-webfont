@@ -1,3 +1,9 @@
+# 4.0.0 (2021-08-23)
+
+### Changed
+
+-   migrate plugin to new syntax for PostCSS 8.
+
 # 3.3.0 (2021-08-23)
 
 ### Changed
