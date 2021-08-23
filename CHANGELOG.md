@@ -1,3 +1,9 @@
+# 3.3.0 (2021-08-23)
+
+### Changed
+
+-   Upgrade yarn version to v3.
+
 # 3.2.0 (2021-08-23)
 
 ### Changed
