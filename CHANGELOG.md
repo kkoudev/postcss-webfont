@@ -1,3 +1,9 @@
+# 3.2.0 (2021-08-23)
+
+### Changed
+
+-   Upgrade versions of all dependencies.
+
 # 3.1.1 (2020-05-10)
 
 ### Fixed
